@@ -1,6 +1,6 @@
 //  __   __  ___        ___
-// |__) /  \  |  |__/ |  |  
-// |__) \__/  |  |  \ |  |  
+// |__) /  \  |  |__/ |  |
+// |__) \__/  |  |  \ |  |
 
 // This is the main file for the chatbot bot.
 
@@ -20,7 +20,7 @@ require('dotenv').config();
 let storage = null;
 if (process.env.MONGO_URI) {
     storage = mongoStorage = new MongoDbStorage({
-        url : process.env.MONGO_URI,
+        url: process.env.MONGO_URI,
     });
 }
 
@@ -35,6 +35,25 @@ const controller = new Botkit({
 
     storage
 });
+
+// controller.middleware.receive.use(async function (bot, message, next) {
+
+//     var reply = {
+//         quick_replies: [
+//             {
+//                 title: 'Hello',
+//                 payload: 'hello'
+//             },
+//             {
+//                 title: 'Help',
+//                 payload: 'help'
+//             },
+//         ]
+//     }
+//     await bot.say(reply)
+//     next();
+
+// });
 
 if (process.env.CMS_URI) {
     controller.usePlugin(new BotkitCMSHelper({
@@ -63,8 +82,3 @@ controller.ready(() => {
     }
 
 });
-
-
-
-
-

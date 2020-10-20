@@ -34,13 +34,50 @@ function personalInfoReply(key) {
 module.exports = function (controller) {
     const MY_PERSONAL_INFO = 'personal info';
     let convo = new BotkitConversation(MY_PERSONAL_INFO, controller);
-
+    // convo.say({
+    //     text: 'Look, quick replies!',
+    //     quick_replies: [
+    //         {
+    //             title: 'Hello',
+    //             payload: 'hello'
+    //         },
+    //         {
+    //             title: 'Help',
+    //             payload: 'help'
+    //         },
+    //     ]
+    // })
     convo.addAction('personalQuestion')
-    convo.addQuestion('what would you like to know about Jesse personally?', async (response, convo, bot) => {
-        console.log(`user name is ${response}`);
+    // convo.addQuestion('what would you like to know about Jesse personally?', async (response, convo, bot) => {
+    //     // await bot.say({ quick_replies: async (template, vars) => { return [{ title: 'age', payload: 'age' }] } })
+    //     const key = response
+    //     await bot.say(personalInfoReply(key))
+    // }, 'personalResponse', 'personalQuestion');
+
+    convo.addQuestion({
+        text: 'what would you like to know about Jesse personally?',
+        quick_replies: [{
+            content_type: 'text',
+            title: 'age',
+            payload: 'age',
+        }, {
+            content_type: 'text',
+            title: 'city',
+            payload: 'city',
+        }, {
+            content_type: 'text',
+            title: 'state',
+            payload: 'state',
+        }, {
+            content_type: 'text',
+            title: 'gender',
+            payload: 'gender',
+        }],
+    }, async function (response, convo, bot) {
         const key = response
         await bot.say(personalInfoReply(key))
-    }, 'personalResponse', 'personalQuestion');
+
+    }, 'response', 'personalQuestion');
 
     convo.addAction('confirmation', 'personalQuestion');
 
