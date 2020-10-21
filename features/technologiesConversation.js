@@ -63,6 +63,32 @@ module.exports = function (controller) {
 
     }, 'response', 'technology question');
 
+    convo.addAction('confirm technology', 'technology question');
+
+    // do a simple conditional branch looking for user to say "no"
+    convo.addQuestion('Would you like to know anything else personal about Jesse', [
+        {
+            pattern: 'no',
+            handler: async (response, convo, bot) => {
+
+            }
+        },
+        {
+            pattern: 'yes',
+            handler: async (response, convo, bot) => {
+
+                await convo.gotoThread('technology question');
+            }
+        },
+        {
+            default: true,
+            handler: async (response, convo, bot) => {
+                await bot.say("Sorry I don't understand. Enter 'yes' or 'no'.")
+                await convo.gotoThread('confirm technology')
+            }
+        }
+    ], 'confirm', 'confirm technology');
+
     controller.addDialog(convo);
 
     controller.hears('technologies', 'message', async (bot, message) => {
