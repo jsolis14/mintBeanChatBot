@@ -34,25 +34,8 @@ function personalInfoReply(key) {
 module.exports = function (controller) {
     const MY_PERSONAL_INFO = 'personal info';
     let convo = new BotkitConversation(MY_PERSONAL_INFO, controller);
-    // convo.say({
-    //     text: 'Look, quick replies!',
-    //     quick_replies: [
-    //         {
-    //             title: 'Hello',
-    //             payload: 'hello'
-    //         },
-    //         {
-    //             title: 'Help',
-    //             payload: 'help'
-    //         },
-    //     ]
-    // })
+
     convo.addAction('personalQuestion')
-    // convo.addQuestion('what would you like to know about Jesse personally?', async (response, convo, bot) => {
-    //     // await bot.say({ quick_replies: async (template, vars) => { return [{ title: 'age', payload: 'age' }] } })
-    //     const key = response
-    //     await bot.say(personalInfoReply(key))
-    // }, 'personalResponse', 'personalQuestion');
 
     convo.addQuestion({
         text: 'what would you like to know about Jesse personally?',
@@ -86,13 +69,13 @@ module.exports = function (controller) {
         {
             pattern: 'no',
             handler: async (response, convo, bot) => {
-                // if user says no, go back to favorite color.
+
             }
         },
         {
             pattern: 'yes',
             handler: async (response, convo, bot) => {
-                // if user says no, go back to favorite color.
+
                 await convo.gotoThread('personalQuestion');
             }
         },
@@ -104,11 +87,6 @@ module.exports = function (controller) {
             }
         }
     ], 'confirm', 'confirmation');
-    // convo.ask('what would you like to know about Jesse personally?', async (response, convo, bot) => {
-    //     console.log(`user name is ${response}`);
-    //     const key = response
-    //     await bot.say(personalInfoReply(key))
-    // }, 'response');
 
     controller.addDialog(convo);
 
