@@ -6,7 +6,7 @@ const data = {
         'flask': ['Health Nut', 'Flippy Flapp'],
         'react': ['Health Nut', 'Flippy Flapp', 'Dotify'],
         'redux': ['Health Nut', 'Flippy Flapp'],
-        'postgreSQL': ['Health Nut', 'Flippy Flapp', 'Aircnc'],
+        'postgresql': ['Health Nut', 'Flippy Flapp', 'Aircnc'],
         'html': ['Health Nut', 'Flippy Flapp', 'Aircnc', 'Dotify'],
         'css': ['Health Nut', 'Flippy Flapp', 'Aircnc', 'Dotify']
     },

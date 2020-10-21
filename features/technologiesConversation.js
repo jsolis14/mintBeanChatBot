@@ -3,11 +3,14 @@ const data = require('../data');
 
 function technologyReply(key) {
     keys = ['javascript', 'python', 'react', 'redux', 'postgres', 'flask', 'express', 'html', 'css']
-
-    if (keys.findIndex(key) !== -1) {
-        return `The projects I have made using ${key} are ${data.technologies[keys[key]].split(',')}`
+    console.log(key, keys)
+    const idx = keys.findIndex((ele) => ele === key)
+    console.log(idx)
+    if (idx !== -1) {
+        console.log(data.technologies[keys[idx]])
+        return `The projects I have made using ${key} are ${data.technologies[keys[idx]].join(', ')}`
     } else if (key === 'all') {
-        return `These are all the technologies which I have used: ${Object.keys(data).join(',')}`
+        return `These are all the technologies which I have used: ${Object.keys(data.technologies).join(',')}`
     } else {
         return ''
     }
@@ -66,7 +69,7 @@ module.exports = function (controller) {
     convo.addAction('confirm technology', 'technology question');
 
     // do a simple conditional branch looking for user to say "no"
-    convo.addQuestion('Would you like to know anything else personal about Jesse', [
+    convo.addQuestion('Would you like to know anything else about the technolgies I have used?', [
         {
             pattern: 'no',
             handler: async (response, convo, bot) => {
