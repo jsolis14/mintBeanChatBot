@@ -16,20 +16,20 @@ const data = {
         'age': '23',
         'gender': 'Male',
     },
-    'Education': {
-        'Texas A&M University': {
-            'Location': 'College Station, Texas',
-            'Started': 'May 2015',
-            'Graduated': 'Dec 2019',
-            'Degree': 'Bachelor of Science',
-            'Major': 'Industrial Engineering'
+    'education': {
+        'texas a&m university': {
+            'location': 'College Station, Texas',
+            'started': 'May 2015',
+            'graduated': 'Dec 2019',
+            'degree': 'Bachelor of Science',
+            'major': 'Industrial Engineering'
         },
-        'App Academy': {
-            'Location': 'San Francisco, CA',
-            'Started': 'Jan 2020',
-            'Graduated': 'Jun 2020',
-            'Degree': '',
-            'Major': 'Web Development'
+        'app academy': {
+            'location': 'San Francisco, CA',
+            'started': 'Jan 2020',
+            'graduated': 'Jun 2020',
+            'degree': 'Other',
+            'major': 'Web Development'
         }
     },
     'Projects': {
